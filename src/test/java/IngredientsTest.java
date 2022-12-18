@@ -1,4 +1,4 @@
-import PageObjects.MainPage;
+import pageobjects.MainPage;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;

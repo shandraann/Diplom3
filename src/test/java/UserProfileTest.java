@@ -1,7 +1,7 @@
-import Client.Credentials;
-import Client.UserClient;
-import Client.UserModel;
-import PageObjects.LoginPage;
+import client.Credentials;
+import client.UserClient;
+import client.UserModel;
+import pageobjects.LoginPage;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
@@ -32,7 +32,7 @@ public class UserProfileTest extends MainTest{
 
     @After
     public void teardown() {
-        userClient.delete(userModel.getEmail(), bearerToken);
+        userClient.delete(bearerToken);
     }
 
 

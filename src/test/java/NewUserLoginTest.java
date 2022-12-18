@@ -1,7 +1,7 @@
-import Client.Credentials;
-import Client.UserModel;
-import Client.UserClient;
-import PageObjects.MainPage;
+import client.Credentials;
+import client.UserModel;
+import client.UserClient;
+import pageobjects.MainPage;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
@@ -34,19 +34,20 @@ public class NewUserLoginTest extends MainTest{
                 .then().log().all()
                 .extract()
                 .path("accessToken");
-        userClient.delete(userModel.getEmail(), bearerToken);
+        userClient.delete(bearerToken);
     }
 
     @Test
-    @DisplayName("Check registering a new user with an incorrect pass, with less than 6 symbols, fails")
+    @DisplayName("Проверка регистрации пользователя с некорректным паролем")
     public void registerNewUserWithIncorrectPassFails() {
         userModel.setPassword("five");
         final boolean incorrectPasswordWarningDisplayed = Selenide.open(MainPage.URL, MainPage.class)
                 .clickLoginButton()
                 .clickRegisterLink()
-                .registerNewUserWithIncorrectPass(userModel)
+                .registerNewUser(userModel)
                 .isIncorrectPassDisplayed();
         assertTrue(incorrectPasswordWarningDisplayed);
         afterToBeLaunched = false;
+        //Если пользователь создастся в этом методе в результате пойманного бага, то он удалится в After
     }
 }

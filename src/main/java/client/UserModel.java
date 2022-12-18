@@ -1,4 +1,4 @@
-package Client;
+package client;
 
 import com.github.javafaker.Faker;
 import org.apache.commons.lang3.RandomStringUtils;

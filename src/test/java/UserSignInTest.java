@@ -1,18 +1,16 @@
-import Client.Credentials;
-import Client.UserClient;
-import Client.UserModel;
-import PageObjects.ForgotPasswordPage;
-import PageObjects.MainPage;
-import PageObjects.RegisterPage;
+import client.Credentials;
+import client.UserClient;
+import client.UserModel;
+import pageobjects.ForgotPasswordPage;
+import pageobjects.MainPage;
+import pageobjects.RegisterPage;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.concurrent.TimeUnit;
-
-import static Client.Credentials.*;
+import static client.Credentials.*;
 import static junit.framework.TestCase.assertTrue;
 
 public class UserSignInTest extends MainTest {
@@ -36,7 +34,7 @@ public class UserSignInTest extends MainTest {
 
     @After
     public void tearDown() {
-        userClient.delete(user.getEmail(), bearerToken);
+        userClient.delete(bearerToken);
     }
 
     @Test

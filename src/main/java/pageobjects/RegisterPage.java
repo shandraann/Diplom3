@@ -1,6 +1,6 @@
-package PageObjects;
+package pageobjects;
 
-import Client.UserModel;
+import client.UserModel;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
@@ -61,17 +61,9 @@ public class RegisterPage {
         return Selenide.page(LoginPage.class);
     }
 
-    @Step("Заполнение формы регистрации")
-    public LoginPage registerNewUser(UserModel user) {
-        inputName(user.getName());
-        inputEmail(user.getEmail());
-        inputPassword(user.getPassword());
-        clickRegisterButton();
-        return Selenide.page(LoginPage.class);
-    }
 
-    @Step("Заполнение формы регистрации неверными данными")
-    public RegisterPage registerNewUserWithIncorrectPass(UserModel user) {
+    @Step("Заполнение формы регистрации данными")
+    public RegisterPage registerNewUser(UserModel user) {
         inputName(user.getName());
         inputEmail(user.getEmail());
         inputPassword(user.getPassword());

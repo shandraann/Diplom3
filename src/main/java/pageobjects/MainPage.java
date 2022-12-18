@@ -1,4 +1,4 @@
-package PageObjects;
+package pageobjects;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
@@ -67,19 +67,16 @@ public class MainPage {
 
     public MainPage displayAvailableBuns() {
         bunsTab.click();
-        Selenide.sleep(3000);
         return this;
     }
 
     public MainPage displayAvailableSauces() {
         saucesTab.click();
-        Selenide.sleep(3000);
         return this;
     }
 
     public MainPage displayAvailableFillings() {
         fillingsTab.click();
-        Selenide.sleep(3000);
         return this;
     }
 

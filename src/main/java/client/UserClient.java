@@ -1,4 +1,4 @@
-package Client;
+package client;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
@@ -24,11 +24,10 @@ public class UserClient extends RestClient {
     }
 
     @Step("Удаление пользователя")
-    public void delete(String user, String bearerToken) {
+    public void delete(String bearerToken) {
 
         reqSpec
                 .header("authorization", bearerToken)
-                .pathParams("user", user)
                 .when()
                 .delete(DELETE)
                 .then().log().all()

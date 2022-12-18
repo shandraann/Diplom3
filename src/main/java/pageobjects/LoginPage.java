@@ -1,6 +1,6 @@
-package PageObjects;
+package pageobjects;
 
-import Client.UserModel;
+import client.UserModel;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
