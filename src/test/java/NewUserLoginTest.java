@@ -1,6 +1,7 @@
 import client.Credentials;
 import client.UserModel;
 import client.UserClient;
+import io.restassured.response.ValidatableResponse;
 import pageobjects.MainPage;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.junit4.DisplayName;
@@ -30,6 +31,7 @@ public class NewUserLoginTest extends MainTest{
         if (!afterToBeLaunched) {
             return;
         }
+
         String bearerToken = userClient.login(creds)
                 .then().log().all()
                 .extract()
@@ -46,8 +48,12 @@ public class NewUserLoginTest extends MainTest{
                 .clickRegisterLink()
                 .registerNewUser(userModel)
                 .isIncorrectPassDisplayed();
-        assertTrue(incorrectPasswordWarningDisplayed);
-        afterToBeLaunched = false;
-        //Если пользователь создастся в этом методе в результате пойманного бага, то он удалится в After
+        if (!incorrectPasswordWarningDisplayed) {
+            String bearerToken = userClient.login(Credentials.from(userModel)).then().log().all().extract().path("accessToken");
+            userClient.delete(bearerToken);
+        }
+            assertTrue(incorrectPasswordWarningDisplayed);
+            afterToBeLaunched = false;
+            //Если пользователь создастся в этом методе в результате пойманного бага, то он удалится в After
     }
 }
